@@ -1,0 +1,47 @@
+1. Conclusions:
+
+Mortality Rates:
+Analysis revealed the likelihood of dying due to COVID-19 in specific countries. 
+For instance, Thailand's "Death Percentage" metric provided a clear view of fatality rates among infected individuals.
+
+Infection Rates:
+The analysis showed countries with the highest percentage of population infected, allowing insight into the spread of COVID-19 relative to population size.
+
+Continental Trends:
+Identified the continents with the highest total death counts and infection rates per population, providing insights into regional impacts of the pandemic.
+
+Global Trends:
+Summing global cases and deaths, you determined the overall COVID-19 mortality rate, showcasing the severity of the pandemic on a global scale.
+
+Vaccination Analysis:
+Explored the relationship between population size and vaccination efforts, calculating rolling totals and vaccination percentages, allowing insight into global vaccination progress.
+
+2.Challenges:
+Data Cleaning:
+Handling missing or inconsistent values in columns such as total_deaths and total_cases. Ensuring accurate type casting (e.g., integers for deaths/cases) was necessary.
+
+Complex Calculations:
+Computing rolling vaccination totals and percentages required careful use of window functions like SUM() OVER() and handling edge cases where data was incomplete.
+
+Large Datasets:
+Querying and processing extensive data across multiple tables (e.g., COVID deaths and vaccinations) likely introduced performance issues, making optimization essential.
+
+Joins and Alignment:
+Merging data from the CovidDeaths and CovidVaccinations tables involved ensuring alignment by location and date, with potential mismatches due to incomplete or inconsistent data.
+
+3.Cool Techniques:
+
+Window Functions for Rolling Totals:
+Using SUM() OVER (PARTITION BY location ORDER BY date) to calculate rolling vaccination numbers was a highly effective method for trend analysis.
+
+CTE (Common Table Expressions):
+Breaking down complex queries into manageable parts with a CTE (PopvsVac) made your queries more readable and reusable.
+
+Temporary Tables:
+Storing intermediate results in a temporary table (#PercentPopulationVaccinated) allowed for iterative analysis and reduced repeated computation.
+
+Percentage Calculations:
+Metrics such as infection percentage (total_cases/population * 100) and death percentage (total_deaths/total_cases * 100) added depth to the analysis, making the results more insightful.
+
+Views for Reusability:
+Creating a view (PercentPopulationVaccinated) to store processed data was an excellent approach for simplifying later visualizations and queries.
